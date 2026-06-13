@@ -55,6 +55,7 @@ Keep this mapping consistent when adding content — it's the visual identity ca
 `.github/workflows/deploy.yml` builds with `withastro/action@v3` and deploys via `actions/deploy-pages` on push to `main`. Requires repo **Settings → Pages → Source: "GitHub Actions"**. The workflow needs no path config because the Astro project is at the repo root.
 
 ## Gotchas
+- **Node ≥ 22.12.0 is required** (Astro 6). The CI workflow pins `node-version: 22` via `withastro/action`; without it the Action defaults to Node 20 and the build fails with "Node.js vXX is not supported by Astro!".
 - `npm`-related commands need `source ~/.zshrc` first (environment quirk).
 - The `package.json` `name` is still the scaffold default (`sd-site`); harmless, rename if desired.
 - The local folder is `system-design-patterns` while the repo/base is `system-design-interview` — cosmetic only, nothing depends on the folder name.
