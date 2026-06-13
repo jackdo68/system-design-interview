@@ -1,0 +1,63 @@
+---
+title: System Design Field Manual
+description: A principal-engineer system design interview field manual — distributed systems, payments, security, and operations, with diagrams.
+template: splash
+hero:
+  tagline: A field manual for senior, tech-lead & principal engineers preparing for high-stakes system-design interviews — and the teams they coach. Reasoning > tech. Name the trade-off every time.
+  image:
+    file: ../../assets/logo.svg
+  actions:
+    - text: Start with the mindset
+      link: /system-design-interview/start/mindset/
+      icon: right-arrow
+      variant: primary
+    - text: Worked design walkthrough
+      link: /system-design-interview/worked-design/money-movement/
+      icon: open-book
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## How to use this book
+
+This is a cheat-sheet **and** a short course. Skim a topic to refresh, or open a **Deep Dive** to go to the depth a principal interview demands. Every page names the **decision**, the **alternative rejected**, the **trade-off accepted**, and the **failure mode at 10×**.
+
+<CardGrid>
+	<Card title="Start Here" icon="rocket">
+		The principal mindset, how to run the room, and the trade-off axes you'll
+		return to in every answer.
+		[Read →](/system-design-interview/start/mindset/)
+	</Card>
+	<Card title="Core Concepts" icon="open-book">
+		The breadth surface — scalability, caching, resilience, idempotency,
+		consistency, observability, security, delivery.
+		[Browse →](/system-design-interview/concepts/scalability/)
+	</Card>
+	<Card title="Deep Dives" icon="magnifier">
+		Go below the box-diagram: sharding, blast radius, multi-tenancy, DR
+		strategies, alerting, 3D Secure.
+		[Dive →](/system-design-interview/deep-dives/caching/)
+	</Card>
+	<Card title="Worked Design" icon="puzzle">
+		A bank-grade money-movement platform — happy path **and** failure path —
+		with architecture and saga diagrams.
+		[Walk through →](/system-design-interview/worked-design/money-movement/)
+	</Card>
+	<Card title="Australia 2026" icon="approve-check">
+		APRA (CPS 230/234), scams & conduct, and the payments rails — NPP/PayTo,
+		BECS, CDR/Open Banking.
+		[Context →](/system-design-interview/australia-2026/context/)
+	</Card>
+	<Card title="Practice" icon="pencil">
+		A question bank with model answers and curveballs, plus a quick-reference
+		cheat sheet to memorise.
+		[Practice →](/system-design-interview/practice/question-bank/)
+	</Card>
+</CardGrid>
+
+## The shift from senior to principal
+
+A senior engineer names the **decision**. A principal makes the decision in a way a working system can survive when things break — and ships with eyes open.
+
+Before reaching for an alternative or rejecting one, say out loud: **the choice → the alternative rejected → the trade-off accepted → the failure mode at 10×.** Name the property you need first, then the tech.

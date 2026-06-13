@@ -1,0 +1,198 @@
+/* ---------------------------------------------------------------------------
+   Fonts (self-hosted via Fontsource)
+   --------------------------------------------------------------------------- */
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/lexend';
+@import '@fontsource-variable/jetbrains-mono';
+
+:root {
+	--sl-font: 'Inter Variable', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+	--sl-font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
+	--font-display: 'Lexend Variable', var(--sl-font);
+}
+
+/* ---------------------------------------------------------------------------
+   Accent palette — refined indigo / violet with a teal secondary
+   Generated to harmonise across light & dark.
+   --------------------------------------------------------------------------- */
+:root {
+	--sl-color-accent-low: #1d1b4b;
+	--sl-color-accent: #6366f1;
+	--sl-color-accent-high: #c7d2fe;
+
+	--sd-teal: #2dd4bf;
+	--sd-amber: #f59e0b;
+	--sd-rose: #fb7185;
+	--sd-radius: 14px;
+}
+
+/* Light mode accent ramp */
+:root[data-theme='light'] {
+	--sl-color-accent-low: #e0e7ff;
+	--sl-color-accent: #4f46e5;
+	--sl-color-accent-high: #312e81;
+
+	--sl-color-bg: #fbfbfe;
+	--sl-color-bg-nav: #ffffffcc;
+	--sl-color-bg-sidebar: #f6f6fb;
+}
+
+/* Dark mode: deepen the canvas for contrast & a premium feel */
+:root[data-theme='dark'] {
+	--sl-color-bg: #0b0b12;
+	--sl-color-bg-nav: #0b0b12cc;
+	--sl-color-bg-sidebar: #0e0e18;
+	--sl-color-hairline-shade: #ffffff12;
+	--sl-color-gray-6: #14141f;
+	--sl-color-gray-7: #0e0e18;
+}
+
+/* ---------------------------------------------------------------------------
+   Typography polish
+   --------------------------------------------------------------------------- */
+body {
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	font-feature-settings: 'cv02', 'cv03', 'cv04', 'ss01';
+}
+
+.content-panel h1,
+.content-panel h2,
+.content-panel h3,
+.sl-markdown-content h1,
+.sl-markdown-content h2,
+.sl-markdown-content h3,
+.hero h1,
+site-title {
+	font-family: var(--font-display);
+	letter-spacing: -0.02em;
+	font-weight: 600;
+}
+
+.sl-markdown-content h2 {
+	margin-top: 2.4rem;
+	padding-bottom: 0.35rem;
+	border-bottom: 1px solid var(--sl-color-hairline);
+}
+
+/* Site title in the header */
+.site-title {
+	font-family: var(--font-display);
+	font-weight: 600;
+	letter-spacing: -0.02em;
+}
+
+/* Comfortable reading measure & rhythm */
+.sl-markdown-content {
+	line-height: 1.7;
+}
+
+/* ---------------------------------------------------------------------------
+   Inline code & code blocks
+   --------------------------------------------------------------------------- */
+.sl-markdown-content code:not(:where(.expressive-code *)) {
+	background: color-mix(in srgb, var(--sl-color-accent) 14%, transparent);
+	border: 1px solid color-mix(in srgb, var(--sl-color-accent) 24%, transparent);
+	border-radius: 6px;
+	padding: 0.1em 0.4em;
+	font-size: 0.86em;
+}
+
+.expressive-code .frame {
+	border-radius: var(--sd-radius);
+}
+
+/* ---------------------------------------------------------------------------
+   Cards — rounder, with a subtle gradient hover lift
+   --------------------------------------------------------------------------- */
+.card {
+	border-radius: var(--sd-radius);
+	border: 1px solid var(--sl-color-gray-5);
+	background: linear-gradient(
+		180deg,
+		color-mix(in srgb, var(--sl-color-accent) 5%, transparent),
+		transparent 60%
+	);
+	transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.card:hover {
+	transform: translateY(-3px);
+	border-color: color-mix(in srgb, var(--sl-color-accent) 55%, transparent);
+	box-shadow: 0 12px 30px -12px color-mix(in srgb, var(--sl-color-accent) 45%, transparent);
+}
+
+.card .icon {
+	background: color-mix(in srgb, var(--sl-color-accent) 16%, transparent);
+	border-radius: 10px;
+	padding: 6px;
+}
+
+.card .title {
+	font-family: var(--font-display);
+	letter-spacing: -0.01em;
+}
+
+/* ---------------------------------------------------------------------------
+   Asides (callouts) — map to the PDF's box styles
+   note = Key Idea · tip = Principal Move · caution = Trap · danger = Never
+   --------------------------------------------------------------------------- */
+.starlight-aside {
+	border-radius: var(--sd-radius);
+	border-width: 1px;
+	border-left-width: 4px;
+}
+
+.starlight-aside--tip {
+	--sl-color-asides-text-accent: var(--sd-teal);
+	--sl-color-asides-border: var(--sd-teal);
+}
+
+/* ---------------------------------------------------------------------------
+   Hero (landing page)
+   --------------------------------------------------------------------------- */
+.hero {
+	padding-block: 1rem 2rem;
+}
+
+.hero h1 {
+	font-size: clamp(2.4rem, 6vw, 3.6rem);
+	background: linear-gradient(120deg, var(--sl-color-white), var(--sl-color-accent-high) 70%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.hero .tagline {
+	font-size: 1.1rem;
+	max-width: 48ch;
+}
+
+/* ---------------------------------------------------------------------------
+   Mermaid diagrams — center & frame
+   --------------------------------------------------------------------------- */
+.mermaid {
+	display: flex;
+	justify-content: center;
+	margin: 1.5rem 0;
+	padding: 1rem;
+	border: 1px solid var(--sl-color-gray-5);
+	border-radius: var(--sd-radius);
+	background: var(--sl-color-gray-7, var(--sl-color-bg));
+	overflow-x: auto;
+}
+
+/* ---------------------------------------------------------------------------
+   Sidebar refinement
+   --------------------------------------------------------------------------- */
+.sidebar-content a[aria-current='page'] {
+	font-weight: 600;
+}
+
+ul.top-level > li > details > summary > .group-label > span {
+	font-family: var(--font-display);
+	font-size: 0.78rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	opacity: 0.85;
+}
