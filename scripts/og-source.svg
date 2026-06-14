@@ -26,10 +26,10 @@
 
   <!-- title -->
   <text x="500" y="270" font-family="Helvetica, Arial, sans-serif" font-size="76" font-weight="700" fill="url(#title)" letter-spacing="-2">System Design</text>
-  <text x="500" y="356" font-family="Helvetica, Arial, sans-serif" font-size="76" font-weight="700" fill="url(#title)" letter-spacing="-2">Field Manual</text>
+  <text x="500" y="356" font-family="Helvetica, Arial, sans-serif" font-size="76" font-weight="700" fill="url(#title)" letter-spacing="-2">Manual</text>
 
   <!-- subtitle -->
-  <text x="503" y="416" font-family="Helvetica, Arial, sans-serif" font-size="30" font-weight="400" fill="#94a3b8">Principal-engineer interview prep — with diagrams</text>
+  <text x="503" y="416" font-family="Helvetica, Arial, sans-serif" font-size="30" font-weight="400" fill="#94a3b8">A runbook for system design interviews</text>
 
   <!-- accent rule -->
   <rect x="503" y="446" width="120" height="5" rx="2.5" fill="url(#g)"/>

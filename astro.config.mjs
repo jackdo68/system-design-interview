@@ -14,9 +14,9 @@ export default defineConfig({
 			autoTheme: true,
 		}),
 		starlight({
-			title: 'System Design Field Manual',
+			title: 'System Design Manual',
 			description:
-				'A principal-engineer system design interview field manual — distributed systems, payments, security, operations.',
+				'A runbook for anyone preparing for a system design interview — distributed systems, payments, security, operations.',
 			logo: {
 				src: './src/assets/logo.svg',
 				replacesTitle: false,
