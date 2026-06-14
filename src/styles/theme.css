@@ -133,6 +133,26 @@ site-title {
 	letter-spacing: -0.01em;
 }
 
+/* Make the entire home-page card clickable (stretched-link pattern).
+   Each card contains exactly one link; its ::after covers the whole card. */
+.home-cards .card {
+	position: relative;
+	cursor: pointer;
+}
+
+.home-cards .card a::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: var(--sd-radius);
+}
+
+/* Keep the visible link affordance above the stretched overlay */
+.home-cards .card a {
+	position: relative;
+	font-weight: 600;
+}
+
 /* ---------------------------------------------------------------------------
    Asides (callouts) — map to the PDF's box styles
    note = Key Idea · tip = Principal Move · caution = Trap · danger = Never
