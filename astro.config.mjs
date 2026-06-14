@@ -57,7 +57,7 @@ export default defineConfig({
 					label: 'Start Here',
 					items: [
 						{ label: 'The Principal Mindset', slug: 'start/mindset' },
-						{ label: 'Running the Room', slug: 'start/running-the-room' },
+						{ label: 'The Interview Framework', slug: 'start/framework' },
 						{ label: 'Trade-off Axes', slug: 'start/trade-offs' },
 					],
 				},
