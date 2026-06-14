@@ -140,17 +140,17 @@ site-title {
 	cursor: pointer;
 }
 
+/* The link stays statically positioned so its ::after resolves against the
+   card (the nearest positioned ancestor), stretching over the whole tile. */
+.home-cards .card a {
+	font-weight: 600;
+}
+
 .home-cards .card a::after {
 	content: '';
 	position: absolute;
 	inset: 0;
 	border-radius: var(--sd-radius);
-}
-
-/* Keep the visible link affordance above the stretched overlay */
-.home-cards .card a {
-	position: relative;
-	font-weight: 600;
 }
 
 /* ---------------------------------------------------------------------------
