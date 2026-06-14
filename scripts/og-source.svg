@@ -1,0 +1,36 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="96" y1="96" x2="416" y2="416" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6366f1"/>
+      <stop offset="0.5" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#2dd4bf"/>
+    </linearGradient>
+    <linearGradient id="title" x1="470" y1="240" x2="470" y2="330" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#c7d2fe"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="1200" height="630" fill="#0a0e16"/>
+  <rect width="1200" height="630" fill="url(#g)" opacity="0.06"/>
+
+  <!-- icon, scaled from the 512 viewBox: translate then scale (360/512 = 0.703) -->
+  <g transform="translate(96 135) scale(0.703)">
+    <rect x="120" y="120" width="272" height="272" rx="68" fill="none" stroke="url(#g)" stroke-width="22"/>
+    <path d="M196 196 H316 M196 196 L256 340 M316 196 L256 340" stroke="url(#g)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="196" cy="196" r="34" fill="url(#g)"/>
+    <circle cx="316" cy="196" r="34" fill="url(#g)"/>
+    <circle cx="256" cy="340" r="34" fill="url(#g)"/>
+  </g>
+
+  <!-- title -->
+  <text x="500" y="270" font-family="Helvetica, Arial, sans-serif" font-size="76" font-weight="700" fill="url(#title)" letter-spacing="-2">System Design</text>
+  <text x="500" y="356" font-family="Helvetica, Arial, sans-serif" font-size="76" font-weight="700" fill="url(#title)" letter-spacing="-2">Field Manual</text>
+
+  <!-- subtitle -->
+  <text x="503" y="416" font-family="Helvetica, Arial, sans-serif" font-size="30" font-weight="400" fill="#94a3b8">Principal-engineer interview prep — with diagrams</text>
+
+  <!-- accent rule -->
+  <rect x="503" y="446" width="120" height="5" rx="2.5" fill="url(#g)"/>
+</svg>

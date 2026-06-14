@@ -48,6 +48,14 @@ The source PDFs' colored boxes are mapped to Starlight asides via `:::` directiv
 
 Keep this mapping consistent when adding content — it's the visual identity carried over from the PDFs.
 
+### Brand assets (favicon & social card)
+- `public/favicon.svg` — the node-graph icon on a dark rounded square.
+- `public/og.png` — the 1200×630 social-share card referenced by `og:image`/`twitter:image` meta tags in `astro.config.mjs` (`head`). Its source is `scripts/og-source.svg`; regenerate with:
+  ```bash
+  node -e "const s=require('sharp');const fs=require('fs');s(fs.readFileSync('scripts/og-source.svg'),{density:200}).resize(1200,630).png().toFile('public/og.png')"
+  ```
+  The `og:image`/`twitter:image` meta tag URLs are **absolute and hardcode the base** (`https://jackdo68.github.io/system-design-interview/og.png`) — social crawlers require absolute URLs, so update these if the domain/base changes.
+
 ### Theming
 `src/styles/theme.css` (registered via `customCss` in `astro.config.mjs`) holds all visual customization: self-hosted Fontsource fonts (Inter body, Lexend display headings, JetBrains Mono code), an indigo/teal accent ramp, card hover-lift, aside and Mermaid framing. Change look-and-feel here, not inline.
 

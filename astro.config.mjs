@@ -21,6 +21,27 @@ export default defineConfig({
 				src: './src/assets/logo.svg',
 				replacesTitle: false,
 			},
+			favicon: '/favicon.svg',
+			head: [
+				// Social-share card (og:image / Twitter)
+				{
+					tag: 'meta',
+					attrs: {
+						property: 'og:image',
+						content: 'https://jackdo68.github.io/system-design-interview/og.png',
+					},
+				},
+				{ tag: 'meta', attrs: { property: 'og:image:width', content: '1200' } },
+				{ tag: 'meta', attrs: { property: 'og:image:height', content: '630' } },
+				{ tag: 'meta', attrs: { name: 'twitter:card', content: 'summary_large_image' } },
+				{
+					tag: 'meta',
+					attrs: {
+						name: 'twitter:image',
+						content: 'https://jackdo68.github.io/system-design-interview/og.png',
+					},
+				},
+			],
 			social: [
 				{
 					icon: 'github',
