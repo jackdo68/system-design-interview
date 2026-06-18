@@ -7,18 +7,9 @@ sidebar:
 
 In a regulated/payments context, security isn't a section at the end — it's a lens on every box. Lead with **deny-by-default** and **defense in depth**.
 
-## AuthN vs AuthZ
-
-- **Authentication (authN)** = **who** you are. OIDC, JWT, MFA.
-- **Authorization (authZ)** = **what** you may do. **RBAC** (roles) or **ABAC** (attributes/context).
-
-Confusing the two is a classic tell. Authentication proves identity; authorization gates actions.
-
-## Tokens & service identity
-
-- **OAuth2 + OIDC** for delegated auth; **short token TTL + refresh/rotation** so a leaked token expires fast.
-- **mTLS service-to-service** — mutual TLS so both ends prove identity. The basis of **zero-trust**: never trust the network, always verify.
-- **Least privilege** and **separation of duties** — the initiator of a payment must not be its approver.
+:::note[Who you are vs what you can do]
+Identity and access control — **authN, authZ, OAuth2/OIDC, sessions vs JWT, RBAC/ABAC, and mTLS** — have their own page: [Authentication & Authorization](../../design/auth/). This page covers the rest of the security surface: encryption, tokenization, multi-tenant isolation, fraud, and abuse.
+:::
 
 ## Encryption
 

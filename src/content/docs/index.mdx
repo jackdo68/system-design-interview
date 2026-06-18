@@ -19,47 +19,62 @@ hero:
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
-## How to use this book
+## How to use this manual
 
-This is a cheat-sheet **and** a short course. Skim a topic to refresh, or open a **Deep Dive** to go to the depth the interview demands. Every page names the **decision**, the **alternative rejected**, the **trade-off accepted**, and the **failure mode at 10×**.
+Read it **in order** like a course, or jump to any topic to refresh. The chapters follow how you actually build a system — **design it → scale it → make it reliable → secure it → operate it → apply it.** Each part builds on the one before, so the knowledge stacks up instead of sitting in a pile.
+
+```mermaid
+flowchart TB
+    F["1 · Foundations<br/>mindset · framework · trade-offs"]
+    D["2 · Design the System<br/>API · data modeling · SQL vs NoSQL · auth · monolith vs distributed"]
+    S["3 · Scale & Performance<br/>scalability · caching · load balancing · sharding · indexing"]
+    R["4 · Reliability<br/>resilience · idempotency · blast radius · chaos & DR"]
+    Sec["5 · Security<br/>auth · fraud · 3DS · supply-chain"]
+    O["6 · Run in Production<br/>observability · SLOs · delivery · testing"]
+    A["7 · Apply & Practice<br/>worked design · question bank · cheat sheet"]
+    F --> D --> S --> R --> Sec --> O --> A
+```
 
 <div class="home-cards">
 <CardGrid>
-	<Card title="Start Here" icon="rocket">
-		The principal mindset, how to run the room, and the trade-off axes you'll
-		return to in every answer.
-		[Read →](/system-design-interview/start/mindset/)
+	<Card title="1 · Foundations" icon="rocket">
+		How to approach the room — the mindset, the step-by-step interview
+		framework, and the trade-off axes you'll return to in every answer.
+		[Start →](/system-design-interview/start/mindset/)
 	</Card>
-	<Card title="Core Concepts" icon="open-book">
-		The breadth surface — scalability, caching, resilience, idempotency,
-		consistency, observability, security, delivery.
-		[Browse →](/system-design-interview/concepts/scalability/)
+	<Card title="2 · Design the System" icon="pencil">
+		The "what to build" phase — API design, data modeling, choosing a
+		database, authentication, and monolith vs distributed.
+		[Design →](/system-design-interview/design/api-data-modeling/)
 	</Card>
-	<Card title="Deep Dives" icon="magnifier">
-		Go below the box-diagram: sharding, blast radius, multi-tenancy, DR
-		strategies, alerting, 3D Secure.
-		[Dive →](/system-design-interview/deep-dives/caching/)
+	<Card title="3 · Scale & Performance" icon="rocket">
+		Make it fast and big — scalability, caching, load balancing, database
+		sharding, and indexing & query optimization.
+		[Scale →](/system-design-interview/concepts/scalability/)
 	</Card>
-	<Card title="Worked Design" icon="puzzle">
-		A bank-grade money-movement platform — happy path **and** failure path —
-		with architecture and saga diagrams.
-		[Walk through →](/system-design-interview/worked-design/money-movement/)
+	<Card title="4 · Reliability" icon="approve-check">
+		Survive failure — resilience patterns, idempotency, blast-radius
+		containment, multi-tenancy, and disaster recovery.
+		[Harden →](/system-design-interview/concepts/resilience/)
 	</Card>
-	<Card title="Australia 2026" icon="approve-check">
-		APRA (CPS 230/234), scams & conduct, and the payments rails — NPP/PayTo,
-		BECS, CDR/Open Banking.
-		[Context →](/system-design-interview/australia-2026/context/)
+	<Card title="5 · Security" icon="warning">
+		Protect it — the security surface, fraud, 3D Secure, and supply-chain
+		integrity.
+		[Secure →](/system-design-interview/concepts/security/)
 	</Card>
-	<Card title="Practice" icon="pencil">
-		A question bank with model answers and curveballs, plus a quick-reference
-		cheat sheet to memorise.
-		[Practice →](/system-design-interview/practice/question-bank/)
+	<Card title="6 · Run in Production" icon="setting">
+		Operate it — observability, SLI/SLO/SLA & error budgets, alerting,
+		DevSecOps delivery, and testing.
+		[Operate →](/system-design-interview/concepts/observability/)
+	</Card>
+	<Card title="7 · Apply & Practice" icon="open-book">
+		Tie it together — a bank-grade worked design with diagrams, plus a
+		question bank and a cheat sheet to memorise.
+		[Practice →](/system-design-interview/worked-design/money-movement/)
 	</Card>
 </CardGrid>
 </div>
 
-## The shift from senior to principal
+## The one habit that matters most
 
-A senior engineer names the **decision**. A principal makes the decision in a way a working system can survive when things break — and ships with eyes open.
-
-Before reaching for an alternative or rejecting one, say out loud: **the choice → the alternative rejected → the trade-off accepted → the failure mode at 10×.** Name the property you need first, then the tech.
+Before reaching for any technology, say it out loud: **the choice → the alternative rejected → the trade-off accepted → the failure mode at 10×.** Name the property you need first, then the tech. That single habit — covered in [The Mindset](/system-design-interview/start/mindset/) — is what separates a senior answer from a junior one.
