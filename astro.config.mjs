@@ -12,6 +12,10 @@ export default defineConfig({
 		mermaid({
 			theme: 'default',
 			autoTheme: true,
+			mermaidConfig: {
+				flowchart: { useMaxWidth: true, htmlLabels: true, padding: 12 },
+				themeVariables: { fontSize: '15px' },
+			},
 		}),
 		starlight({
 			title: 'System Design Manual',
@@ -50,6 +54,10 @@ export default defineConfig({
 				},
 			],
 			customCss: ['./src/styles/theme.css'],
+			components: {
+				// Adds the Mermaid click-to-zoom lightbox on every page
+				Head: './src/components/Head.astro',
+			},
 			lastUpdated: true,
 			tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 3 },
 			sidebar: [

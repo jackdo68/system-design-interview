@@ -1,0 +1,71 @@
+---
+// Custom Head override: renders Starlight's default <head>, then injects a
+// click-to-zoom lightbox for Mermaid diagrams (scroll to zoom, drag to pan).
+import Default from '@astrojs/starlight/components/Head.astro';
+---
+
+<Default><slot /></Default>
+
+<script>
+	import panzoom from 'panzoom';
+
+	let overlay: HTMLDivElement | null = null;
+	let pz: { dispose: () => void } | null = null;
+
+	function ensureOverlay(): HTMLDivElement {
+		if (overlay) return overlay;
+		overlay = document.createElement('div');
+		overlay.className = 'diagram-lightbox';
+		overlay.innerHTML = `
+			<button class="diagram-lightbox__close" aria-label="Close diagram">&times;</button>
+			<div class="diagram-lightbox__stage"></div>
+			<div class="diagram-lightbox__hint">scroll to zoom &middot; drag to pan &middot; Esc to close</div>`;
+		document.body.appendChild(overlay);
+		overlay.querySelector('.diagram-lightbox__close')!.addEventListener('click', closeLightbox);
+		overlay.addEventListener('click', (e) => {
+			if (e.target === overlay) closeLightbox();
+		});
+		return overlay;
+	}
+
+	function openLightbox(mermaidEl: Element) {
+		const svg = mermaidEl.querySelector('svg');
+		if (!svg) return;
+		const o = ensureOverlay();
+		const stage = o.querySelector('.diagram-lightbox__stage') as HTMLDivElement;
+		stage.innerHTML = '';
+
+		const clone = svg.cloneNode(true) as SVGElement;
+		clone.removeAttribute('style');
+		clone.style.maxWidth = 'none';
+		clone.style.width = 'min(92vw, 1500px)';
+		clone.style.height = 'auto';
+		stage.appendChild(clone);
+
+		o.classList.add('is-open');
+		document.body.style.overflow = 'hidden';
+		pz = panzoom(clone, { maxZoom: 12, minZoom: 0.4, bounds: true, boundsPadding: 0.15 });
+	}
+
+	function closeLightbox() {
+		if (!overlay) return;
+		overlay.classList.remove('is-open');
+		document.body.style.overflow = '';
+		if (pz) {
+			pz.dispose();
+			pz = null;
+		}
+	}
+
+	// Event delegation — works regardless of when Mermaid finishes rendering
+	// or when Starlight swaps pages on client-side navigation.
+	document.addEventListener('click', (e) => {
+		const target = e.target as Element;
+		const m = target.closest?.('.mermaid');
+		if (m && m.querySelector('svg')) openLightbox(m);
+	});
+
+	document.addEventListener('keydown', (e) => {
+		if (e.key === 'Escape') closeLightbox();
+	});
+</script>
