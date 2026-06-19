@@ -36,15 +36,21 @@ import Default from '@astrojs/starlight/components/Head.astro';
 		stage.innerHTML = '';
 
 		const clone = svg.cloneNode(true) as SVGElement;
+		// Let the SVG scale to fit the viewport (preserves aspect ratio via viewBox),
+		// so the whole diagram is visible on open — then the user zooms in from there.
 		clone.removeAttribute('style');
-		clone.style.maxWidth = 'none';
-		clone.style.width = 'min(92vw, 1500px)';
+		clone.removeAttribute('width');
+		clone.removeAttribute('height');
+		clone.style.maxWidth = '90vw';
+		clone.style.maxHeight = '84vh';
+		clone.style.width = 'auto';
 		clone.style.height = 'auto';
 		stage.appendChild(clone);
 
 		o.classList.add('is-open');
 		document.body.style.overflow = 'hidden';
-		pz = panzoom(clone, { maxZoom: 12, minZoom: 0.4, bounds: true, boundsPadding: 0.15 });
+		// bounds:false → free panning in any direction (no lock).
+		pz = panzoom(clone, { maxZoom: 12, minZoom: 0.2, bounds: false });
 	}
 
 	function closeLightbox() {
