@@ -57,6 +57,10 @@ Isolate resources into pools/cells so one greedy dependency or noisy tenant **ca
 
 When demand exceeds capacity, **protect the critical path**: signal upstream to slow down (backpressure), or **shed** low-priority load (reject early, cheaply) so the important work still completes. Better to drop 5% deliberately than collapse 100%.
 
+:::note[Go deeper · Tech Unpack]
+[Why Your System Crashes Under Load — and How Kafka and SQS Push Back →](https://technunpack.substack.com/p/why-your-system-crashes-under-load) — how message queues apply backpressure to protect the critical path.
+:::
+
 ## Graceful degradation
 
 Design **tiers** of service so you can drop features instead of falling over:

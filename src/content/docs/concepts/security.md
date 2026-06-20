@@ -21,6 +21,10 @@ Encrypt **in transit** (TLS), **at rest** (disk/DB), and **field-level** for the
 **Tokenize to cut PCI-DSS scope.** Replace the real card number (PAN) with a token at the edge; downstream systems only ever see the token. Now those systems are **out of PCI scope** — a massive reduction in audit surface and risk. Naming this shows you understand compliance as an architecture force.
 :::
 
+:::note[Go deeper · Tech Unpack]
+[What's Actually Living Inside Your Apple Wallet and Google Pay? →](https://technunpack.substack.com/p/whats-actually-living-inside-your) — card tokenization end to end, from the 16-digit PAN to the device token.
+:::
+
 ## Multi-tenant isolation
 
 - **`tenantId` everywhere** + **row-level security** so a query can never cross tenants.

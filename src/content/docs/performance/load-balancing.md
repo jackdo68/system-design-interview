@@ -7,6 +7,10 @@ sidebar:
 
 The moment you run **more than one** server (which is how you scale horizontally), something has to decide *which* server each request goes to. That's load balancing — and it's also what gives you failover when a server dies.
 
+:::note[Go deeper · Tech Unpack]
+[Horizontal Scaling — Load Balancers, Sticky Sessions, and What "Stateless" Actually Requires →](https://technunpack.substack.com/p/horizontal-scaling-load-balancers) — a hands-on walkthrough of the exact mechanics on this page.
+:::
+
 ## Why you need it
 
 - **Spread load** evenly so no single server is overwhelmed.

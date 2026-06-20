@@ -35,6 +35,10 @@ This is the lens for capacity:
 
 The answer is **never** "fall over." It's **shed the non-critical load to protect the critical path.**
 
+:::note[Go deeper · Tech Unpack]
+[Why Your System Crashes Under Load — and How Kafka and SQS Push Back →](https://technunpack.substack.com/p/why-your-system-crashes-under-load) — queues and backpressure absorbing overload, in detail.
+:::
+
 ## Shedding load gracefully
 
 :::caution[Trap to avoid]

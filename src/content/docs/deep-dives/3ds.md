@@ -38,6 +38,10 @@ sequenceDiagram
 3DS2 sends a rich **device + transaction risk** payload up front so most payments are approved **frictionlessly** — no user interaction at all. Only elevated-risk transactions get a **challenge** (OTP, biometric, app approval). The design goal is *security without killing conversion* — every challenge is a checkout you might lose. This is the same step-up idea from the [fraud](../../concepts/security/) layer, applied to cards.
 :::
 
+:::note[Go deeper · Tech Unpack]
+[How Card Payments Work in Australia →](https://technunpack.substack.com/p/how-card-payments-work-in-australia) — EFTPOS, fees, surcharges, and the 2026 RBA reform behind these card flows.
+:::
+
 ## Liability shift
 
 The commercial reason 3DS exists:

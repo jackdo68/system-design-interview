@@ -38,6 +38,10 @@ flowchart LR
     classDef idle fill:#0000,stroke-dasharray:3
 ```
 
+:::note[Go deeper · Tech Unpack]
+[The Database Performance Bottlenecks →](https://technunpack.substack.com/p/the-database-performance-bottlenecks) — how partitioning and indexes shape real database performance.
+:::
+
 ## Cross-shard operations are the tax
 
 The cost you take on when you shard:

@@ -42,6 +42,10 @@ Know the Australian rails by name and property:
 The rail's properties drive the design. **NPP/PayTo** is **real-time and irrevocable** — so fraud checks must be **synchronous and fast** (you can't claw it back), and your idempotency/reconciliation has to be airtight. **BECS** is **batch**, so it's eventually consistent by nature with a settlement window. Choosing the rail *is* choosing your consistency and fraud-timing model.
 :::
 
+:::note[Go deeper · Tech Unpack]
+[How Card Payments Work in Australia →](https://technunpack.substack.com/p/how-card-payments-work-in-australia) — EFTPOS, fees, surcharges, and the 2026 RBA reform.
+:::
+
 ## Putting it together
 
 A strong Australian answer weaves these in naturally: *"This is on NPP, so settlement is real-time and irrevocable — fraud is synchronous on the critical path. The PSP is a material service provider under CPS 230, so I need a tested fallback and a defined disruption tolerance. And under the Scams Prevention Framework, confirmation-of-payee and clear customer warnings are part of the design, not an afterthought."*

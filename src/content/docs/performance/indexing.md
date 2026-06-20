@@ -46,6 +46,10 @@ Slow systems are often not missing an index — they're making **too many querie
 - **N+1 queries** — fetching a list (1 query), then looping and querying once **per item** (N queries). Fix by fetching together (a join or a single `WHERE id IN (...)`). This is the most common performance bug in real apps.
 - **Offset pagination** — `LIMIT 20 OFFSET 10000` makes the DB count past 10,000 rows every time, and rows shift as data changes. Use **keyset (cursor) pagination**: `WHERE id > :last_seen ORDER BY id LIMIT 20`. → [API Design](../../design/api-data-modeling/)
 
+:::note[Go deeper · Tech Unpack]
+[The Database Performance Bottlenecks →](https://technunpack.substack.com/p/the-database-performance-bottlenecks) — a deeper tour of where database reads and writes actually slow down.
+:::
+
 ## When indexing isn't enough
 
 If the query is tuned and still too slow, climb the next rungs:

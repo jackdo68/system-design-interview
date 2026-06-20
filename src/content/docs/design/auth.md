@@ -53,6 +53,10 @@ The standard for "let users log in" and "let app A act on behalf of a user in ap
 - **Authorization Code + PKCE** — for user login from web/mobile apps. The app gets a short code, swaps it for tokens server-side; PKCE stops the code being stolen. This is the default for user-facing apps.
 - **Client Credentials** — for **service-to-service** with no user (machine-to-machine). The service authenticates as itself.
 
+:::note[Go deeper · Tech Unpack]
+[Passkeys: Log In Smarter, Not Harder →](https://technunpack.substack.com/p/passkeys-log-in-smarter-not-harder) — how passwordless authentication works, and why it's replacing passwords.
+:::
+
 ## Authorization models: RBAC vs ABAC
 
 How you decide *what* an authenticated user can do:

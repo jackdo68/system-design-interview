@@ -23,6 +23,11 @@ Horizontal scaling only works if the compute tier is **stateless** — push stat
 - Any request can hit any node → scale out freely behind a load balancer.
 - **Rolling deploys** become trivial (no sticky sessions to drain).
 
+:::note[Go deeper · Tech Unpack]
+- [The Shared State Problem →](https://technunpack.substack.com/p/the-shared-state-problem-how-real) — why statelessness is hard, and how real systems actually solve it.
+- [Horizontal Scaling — Load Balancers, Sticky Sessions, Stateless →](https://technunpack.substack.com/p/horizontal-scaling-load-balancers) — scaling out the compute tier in practice.
+:::
+
 ## Decompose by capability and data ownership
 
 Split services along **business capability + data ownership**, not technical layers. **Start coarse** — a handful of services you understand — and split further only when a seam genuinely hurts (independent scaling, independent deploy, team boundaries).
