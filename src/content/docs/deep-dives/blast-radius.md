@@ -23,7 +23,7 @@ flowchart TD
 ## Cell-based architecture
 
 :::tip[Principal Move]
-A **cell** is a full vertical slice — its own compute, data, and dependencies — serving a partition of customers. With N cells, any single failure (a bad deploy, a poison tenant, a corrupted cache) is contained to **~1/N of users**.
+It's good to design full cell-based architecture at principal level — but for a senior, you should at least know that cells contain a failure to **~1/N of users**. A **cell** is a full vertical slice — its own compute, data, and dependencies — serving a partition of customers. With N cells, any single failure (a bad deploy, a poison tenant, a corrupted cache) is contained to ~1/N of users.
 
 > Blast radius = **1 cell ≈ −(100/N)%** of the fleet.
 

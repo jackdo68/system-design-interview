@@ -17,12 +17,12 @@ Monitoring answers questions you knew to ask. **Observability** lets you answer 
 
 Three overlapping frameworks — know which fits what:
 
-- **4 Golden Signals** (Google SRE): **Latency, Traffic, Errors, Saturation.**
+- **4 Golden Signals** (Google <abbr title="SRE — Site Reliability Engineering: Google's discipline of running production systems with software-engineering practices.">SRE</abbr>): **Latency, Traffic, Errors, Saturation.**
 - **RED** (per service): **Rate, Errors, Duration.**
 - **USE** (per resource): **Utilisation, Saturation, Errors.**
 
 :::tip[Principal Move]
-Alert on the **p99 tail, not the average.** An average hides the users having a terrible time — if p50 is 50 ms but p99 is 4 s, 1% of requests are timing out and the mean looks fine. And watch **saturation as a leading indicator**: queues filling and pools nearing capacity predict the outage *before* errors spike.
+It's good to watch these proactively at principal level — but for a senior, you should at least alert on the **p99 tail, not the average.** An average hides the users having a terrible time — if p50 is 50 ms but p99 is 4 s, 1% of requests are timing out and the mean looks fine. And watch **saturation as a leading indicator**: queues filling and pools nearing capacity predict the outage *before* errors spike.
 :::
 
 ## Reliability vocabulary

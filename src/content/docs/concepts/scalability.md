@@ -9,11 +9,11 @@ Scaling is about removing the next bottleneck without creating a worse one. Know
 
 ## Vertical vs horizontal
 
-- **Vertical** = bigger box. Simple, but has a **ceiling** and remains a single point of failure (SPOF).
+- **Vertical** = bigger box. Simple, but has a **ceiling** and remains a single point of failure (<abbr title="SPOF — Single Point Of Failure: one component whose failure takes the whole system down.">SPOF</abbr>).
 - **Horizontal** = more boxes. No hard ceiling, survives a node loss — but **requires statelessness** and adds coordination.
 
 :::tip[Principal Move]
-Reach for vertical first when it buys you time cheaply, then go horizontal when you hit the ceiling or need HA. Say *which* you're doing and *why*.
+It's good to sequence this deliberately at principal level — but for a senior, you should at least know that vertical buys time cheaply and horizontal needs statelessness. Reach for vertical first when it buys you time, then go horizontal when you hit the ceiling or need high availability (HA). Say *which* you're doing and *why*.
 :::
 
 ## Statelessness is the enabler

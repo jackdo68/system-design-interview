@@ -9,7 +9,7 @@ Every system that has users needs to answer two different questions. Mixing them
 
 ## AuthN vs AuthZ — the two questions
 
-- **Authentication (authN) = "who are you?"** — proving identity. Login, MFA, tokens.
+- **Authentication (authN) = "who are you?"** — proving identity. Login, <abbr title="MFA — Multi-Factor Authentication: proving identity with more than one factor, e.g. a password plus a code from your phone.">MFA</abbr>, tokens.
 - **Authorization (authZ) = "what are you allowed to do?"** — gating actions once identity is known.
 
 > A valid login (authN) does **not** mean you can delete another user's payment (authZ). You check identity first, then permission.
@@ -18,7 +18,7 @@ Every system that has users needs to answer two different questions. Mixing them
 
 After login, the system needs to remember who you are on each request. Two approaches:
 
-| | **Session (stateful)** | **JWT / token (stateless)** |
+| | **Session (stateful)** | **<abbr title="JWT — JSON Web Token: a signed token holding the user's identity/claims. The server trusts it by checking the signature, with no database lookup.">JWT</abbr> / token (stateless)** |
 | --- | --- | --- |
 | Where state lives | On the server (session store) | In the signed token itself |
 | Each request sends | A session id (cookie) | The whole signed token |
@@ -28,7 +28,7 @@ After login, the system needs to remember who you are on each request. Two appro
 **Do this:**
 
 - **Sessions** when you need instant revocation and have a shared store (Redis) — e.g. a banking web app.
-- **JWTs** when you want stateless, cross-service auth — but keep TTL **short** (minutes) and pair with a **refresh token** so a leaked token dies fast. → revocation is the JWT weakness; short TTL is the mitigation.
+- **JWTs** when you want stateless, cross-service auth — but keep the <abbr title="TTL — Time To Live: how long the token stays valid before it expires.">TTL</abbr> **short** (minutes) and pair with a **refresh token** so a leaked token dies fast. → revocation is the JWT weakness; short TTL is the mitigation.
 
 :::caution[Trap to avoid]
 **A JWT can't be un-issued.** If it's valid for 24h and it leaks, the attacker has 24h. Use short-lived access tokens (~5–15 min) + a refresh token you *can* revoke. Never put secrets in a JWT — it's signed, not encrypted; anyone can read the payload.
@@ -50,7 +50,7 @@ The standard for "let users log in" and "let app A act on behalf of a user in ap
 
 **The two flows you'll mention:**
 
-- **Authorization Code + PKCE** — for user login from web/mobile apps. The app gets a short code, swaps it for tokens server-side; PKCE stops the code being stolen. This is the default for user-facing apps.
+- **Authorization Code + <abbr title="PKCE — Proof Key for Code Exchange: a check that ties the login request and the token swap to the same app, so a stolen code can't be used by an attacker.">PKCE</abbr>** — for user login from web/mobile apps. The app gets a short code, swaps it for tokens server-side; PKCE stops the code being stolen. This is the default for user-facing apps.
 - **Client Credentials** — for **service-to-service** with no user (machine-to-machine). The service authenticates as itself.
 
 :::note[Go deeper · Tech Unpack]
@@ -65,7 +65,7 @@ How you decide *what* an authenticated user can do:
 - **ABAC (Attribute-Based)** — permissions are computed from **attributes/context**. *"A manager can approve a payment **only if** amount < $10k **and** it's in their region."* More powerful, more complex.
 
 :::tip[Principal Move]
-Start with **RBAC** — it's enough for most systems and easy to reason about. Move to **ABAC** only when decisions genuinely depend on context (amount, time, location, ownership). And enforce **separation of duties**: the person who *initiates* a payment must not be the one who *approves* it.
+It's good to make this call deliberately at principal level — but for a senior, you should at least default to **RBAC** and know when context forces **ABAC**. Start with RBAC — it's enough for most systems and easy to reason about. Move to ABAC only when decisions genuinely depend on context (amount, time, location, ownership). And enforce **separation of duties**: the person who *initiates* a payment must not be the one who *approves* it.
 :::
 
 ## Service-to-service: mTLS & zero-trust

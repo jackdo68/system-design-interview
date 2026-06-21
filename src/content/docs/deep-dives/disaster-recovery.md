@@ -35,7 +35,7 @@ Climb to your RTO/RPO requirement — and **no further**. Active-active is the g
 ## The database is the hard part
 
 :::tip[Principal Move]
-Stateless compute fails over trivially — point DNS/Route 53 at the standby region. The **stateful** tier is the whole problem:
+It's good to reason about cross-region consistency at principal level — but for a senior, you should at least know the **stateful tier is the hard part** of failover, not the compute. Stateless compute fails over trivially — point DNS/Route 53 at the standby region. The **stateful** tier is the whole problem:
 
 - **Async replication** to the standby → fast, cheap, but a small **RPO > 0** (the last few in-flight writes can be lost on sudden failover).
 - **Synchronous replication** → **RPO = 0**, but every write now pays the cross-region round-trip in latency, and a standby outage can stall the primary.

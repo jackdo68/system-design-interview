@@ -20,7 +20,7 @@ Retries are a foot-gun. Only retry when **all** of these hold:
 - You use **exponential backoff + jitter** (never a tight loop).
 - You **cap** the attempts and honour a **retry budget** (cap the % of traffic that is retries).
 
-Naïve retries turn a brief blip into a self-inflicted DDoS.
+Naïve retries turn a brief blip into a self-inflicted <abbr title="DDoS — Distributed Denial of Service: overwhelming a service with a flood of requests. 'Self-inflicted' means your own clients' retries cause the flood.">DDoS</abbr>.
 :::
 
 ### Jitter

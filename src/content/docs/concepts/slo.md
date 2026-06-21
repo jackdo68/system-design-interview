@@ -24,7 +24,7 @@ These three are constantly confused. Getting them crisp is an easy way to sound 
 ## The error budget
 
 :::tip[Principal Move]
-**Error budget = 1 − SLO.** A 99.9% SLO gives you a 0.1% budget to *spend* — on deploys, experiments, risk.
+It's good to run the team on this at principal level — but for a senior, you should at least know **error budget = 1 − SLO** and what it buys you. A 99.9% SLO gives you a 0.1% budget to *spend* — on deploys, experiments, risk.
 
 - Budget healthy → ship features, take risks.
 - **Burning the budget fast → freeze risky changes and invest in stability.**

@@ -12,7 +12,7 @@ Idempotency is the property that **doing it twice is the same as doing it once**
 The idempotency key must be **minted by the client**, **stable across retries**, and **unique per intent**.
 
 :::tip[Principal Move]
-Get the key source right — it's the most common mistake:
+It's good to be this precise at principal level — but for a senior, you should at least insist the key is **client-minted and stable across retries**. Get the key source right — it's the most common mistake:
 
 **✓ Good keys** — client-generated UUID, order reference, the provider's own idempotency key.
 

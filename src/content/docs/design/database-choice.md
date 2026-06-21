@@ -16,7 +16,7 @@ sidebar:
 Reach for a relational database (Postgres, MySQL) **by default**. Pick it when you have:
 
 - **Relationships and joins** — data that references other data.
-- **Transactions** — multiple changes that must succeed or fail together (ACID). A money transfer is the canonical case.
+- **Transactions** — multiple changes that must succeed or fail together (<abbr title="ACID — database guarantees that a transaction is Atomic, Consistent, Isolated, and Durable: it fully succeeds or fully fails, and survives crashes.">ACID</abbr>). A money transfer is the classic case.
 - **Ad-hoc queries** — you don't know every query in advance and want flexible `WHERE`/`JOIN`/`GROUP BY`.
 - **Strong consistency** — read-your-writes, no surprises.
 
@@ -41,7 +41,7 @@ NoSQL isn't one thing — it's four families, each good at a specific shape:
 4. **Is it a relationship-traversal problem** ("friends of friends", "accounts linked to this fraud ring")? → graph.
 
 :::tip[Principal Move]
-The real question is: **"What are my access patterns, and how strong must consistency be?"** NoSQL stores make you design the schema *around the query* up front — fast if you know the query, painful if it changes. SQL keeps you flexible at the cost of some scaling work later. Name that trade-off out loud.
+It's good to frame it this sharply at principal level — but for a senior, you should at least choose SQL vs NoSQL from your **access patterns and consistency need**, not from "scale". The real question is: **"What are my access patterns, and how strong must consistency be?"** NoSQL stores make you design the schema *around the query* up front — fast if you know the query, painful if it changes. SQL keeps you flexible at the cost of some scaling work later. Name that trade-off out loud.
 :::
 
 ## Polyglot persistence

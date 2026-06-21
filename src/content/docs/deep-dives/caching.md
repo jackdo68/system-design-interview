@@ -47,6 +47,8 @@ flowchart LR
 ### Fixes
 
 :::tip[Principal Move]
+It's good to reach for the full toolkit at principal level — but for a senior, you should at least stop a stampede with **single-flight + jittered TTL**:
+
 - **Request coalescing / single-flight** — the *first* miss fetches; concurrent misses **wait for that one result** instead of each hitting the DB. One DB query, not a thousand.
 - **Jittered TTL** — add randomness to expiry (`TTL ± rand`) so keys populated together don't all expire together. Kills the synchronised stampede the same way jitter kills retry storms.
 - **Early/probabilistic refresh** — refresh a hot key slightly *before* it expires, in the background.

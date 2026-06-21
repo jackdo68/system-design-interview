@@ -37,7 +37,7 @@ GET  /v1/payments?limit=20&cursor=<token> → { items: Payment[], next: cursor }
 ## Part 2 — Model the data (shape it around your queries)
 
 :::tip[Principal Move]
-**Model for your access patterns, not for tidiness.** Don't design the "perfect" normalized schema in the abstract — list the **reads and writes** your API makes, then shape the data so the common ones are cheap. The query pattern drives the model, not the other way around.
+It's good to have this instinct at principal level — but for a senior, you should at least list your API's main reads and writes and make sure the common ones are cheap (indexed lookups, no surprise joins). The fuller principal habit: **model for your access patterns, not for tidiness.** Don't design the "perfect" normalized schema in the abstract — let the query pattern drive the model, not the other way around.
 :::
 
 **Do this:**

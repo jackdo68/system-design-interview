@@ -10,9 +10,9 @@ You don't know your system is resilient until you've broken it on purpose. Chaos
 ## Chaos engineering
 
 :::tip[Principal Move]
-Chaos is not "randomly break things." It's a **controlled experiment**: a **hypothesis**, a **small blast radius**, and a **stop button**.
+It's good to run chaos this rigorously at principal level — but for a senior, you should at least treat it as a **controlled experiment**, not random breakage: a **hypothesis**, a **small blast radius**, and a **stop button**.
 
-> *"I believe if I kill one AZ, traffic fails over within 30s with no errors. Let's verify — on 1% of traffic, with an abort switch."*
+> *"I believe if I kill one <abbr title="AZ — Availability Zone: an isolated datacenter within a cloud region. Killing one tests whether traffic fails over to the others.">AZ</abbr>, traffic fails over within 30s with no errors. Let's verify — on 1% of traffic, with an abort switch."*
 
 If the hypothesis holds, you've earned confidence. If it doesn't, you found the bug before your customers did.
 :::

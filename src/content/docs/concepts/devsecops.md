@@ -16,7 +16,7 @@ How you ship is part of the design. Small, reversible, observable changes are a 
 
 ## DORA metrics
 
-The four research-backed delivery metrics:
+The four research-backed delivery metrics (<abbr title="DORA — DevOps Research and Assessment: a long-running Google research program that identified these four metrics as predictors of software delivery performance.">DORA</abbr>):
 
 - **Deployment frequency** — how often you ship.
 - **Lead time for changes** — commit → production.
@@ -34,7 +34,7 @@ Ship gradually so blast radius is small and rollback is automatic:
 - **Feature flags** — **deploy ≠ release.** Code ships dark, then you flip the flag; the flag is also a **kill-switch**.
 
 :::tip[Principal Move]
-**Decouple deploy from release** with feature flags. The code can be in production for days, exercised and observed, before any user sees it — and turning it off is a config change, not a redeploy. This is how you de-risk big changes.
+It's good to use this to de-risk big changes at principal level — but for a senior, you should at least **decouple deploy from release** with feature flags. The code can be in production for days, exercised and observed, before any user sees it — and turning it off is a config change, not a redeploy.
 :::
 
 ## Shift left — scan early
@@ -42,7 +42,7 @@ Ship gradually so blast radius is small and rollback is automatic:
 Move security checks as early in the pipeline as possible:
 
 - **SAST** — static analysis of **source**.
-- **SCA** — scan **dependencies** for known CVEs.
+- **SCA** — scan **dependencies** for known <abbr title="CVE — Common Vulnerabilities and Exposures: a publicly catalogued security flaw, each with an ID, e.g. the Log4Shell bug.">CVEs</abbr>.
 - **DAST** — test the **running** app.
 - **IAST** — instrumented, runtime analysis.
 - **Secret scanning** + **IaC scanning** — catch leaked credentials and misconfigured infrastructure-as-code.

@@ -12,7 +12,7 @@ The 2020s taught everyone that your biggest risk may be code you didn't write �
 An **SBOM** is a complete manifest of every component and version in a build — direct and transitive dependencies, libraries, base-image packages.
 
 :::tip[Principal Move]
-The SBOM answers one question fast: **"When the next Log4Shell drops, are we affected, and where?"** Without an SBOM you're grepping repos for days during an active exploit. With one, you query the manifest and have an answer in minutes. Generate it **at build time** (CycloneDX / SPDX format) and store it per release.
+It's good to operationalise this fully at principal level — but for a senior, you should at least keep an **SBOM** so you can answer "are we affected?" fast. The SBOM answers one question: **"When the next Log4Shell drops, are we affected, and where?"** Without an SBOM you're grepping repos for days during an active exploit. With one, you query the manifest and have an answer in minutes. Generate it **at build time** (CycloneDX / SPDX format) and store it per release.
 :::
 
 ## Signed artifacts & provenance

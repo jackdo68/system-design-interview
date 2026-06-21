@@ -19,12 +19,12 @@ For each one: what it asks, **when it dominates** the decision, and the concrete
 ### Cost — "how much $?"
 - **Trades against:** latency and redundancy.
 - **Dominates when:** you're at scale (a tiny per-request cost × billions = real money) or under a hard budget.
-- **Example:** active-active across regions gives ~zero RTO but roughly doubles infra spend. You pick it only when the cost of downtime exceeds the cost of the second region.
+- **Example:** active-active across regions (two regions both serving live traffic) gives a near-zero <abbr title="Recovery Time Objective — how quickly you must be back up after an outage. Near-zero RTO means failover is effectively instant.">RTO</abbr> but roughly doubles infrastructure spend. You pick it only when the cost of downtime exceeds the cost of the second region.
 
 ### Consistency — "how correct / fresh?"
 - **Trades against:** availability (refuse under partition) and latency (coordination costs time).
 - **Dominates when:** a wrong answer is unrecoverable — the money path.
-- **Example:** the **ledger is CP** — refuse a write during a partition rather than risk a wrong balance. **Analytics is AP** — serve slightly stale numbers and stay up. → [Consistency](../../concepts/consistency/)
+- **Example:** the **ledger is <abbr title="Consistency under Partition — when the network splits, refuse writes you can't confirm rather than risk a wrong answer.">CP</abbr>** — refuse a write during a network split rather than risk a wrong balance. **Analytics is <abbr title="Availability under Partition — when the network splits, keep serving requests, accepting that some data may be stale.">AP</abbr>** — serve slightly stale numbers and stay up. → [Consistency](../../concepts/consistency/)
 
 ### Availability — "how often up?"
 - **Trades against:** consistency and cost (each nine costs exponentially more).
@@ -34,7 +34,7 @@ For each one: what it asks, **when it dominates** the decision, and the concrete
 ### Blast radius — "how much breaks together?"
 - **Trades against:** cost and simplicity.
 - **Dominates when:** multi-tenant or regulated, where one bad change can't be allowed to take everyone down.
-- **Example:** cell-based architecture caps a bad deploy or poison tenant to ~1/N of users — but now you operate and deploy N cells instead of one fleet. → [Blast Radius](../../deep-dives/blast-radius/)
+- **Example:** a cell-based architecture (splitting users into independent groups, or "cells") caps a bad deploy or one misbehaving tenant to ~1/N of users — but now you operate and deploy N cells instead of one fleet. → [Blast Radius](../../deep-dives/blast-radius/)
 
 ### Ops toil — "how much human upkeep?"
 - **Trades against:** build-time and control.
@@ -49,12 +49,12 @@ For each one: what it asks, **when it dominates** the decision, and the concrete
 ### Maintainability — "how easy to change?"
 - **Trades against:** short-term speed — a clever shortcut today taxes every future change.
 - **Dominates when:** the system is long-lived and core.
-- **Example:** a denormalized read model is fast to ship and read, but every write path must now keep it in sync forever. → [CQRS / Scalability](../../concepts/scalability/)
+- **Example:** a denormalized read model (a pre-joined copy of the data, shaped for fast reads) is quick to ship and read, but every write path must now keep it in sync forever. → [CQRS / Scalability](../../concepts/scalability/)
 
 ## Build vs buy
 
 :::tip[Principal Move]
-**Buy the undifferentiated; build the core.** Buy auth, email, observability tooling, queues. Build the things that *are* your competitive edge or your correctness boundary — the **ledger** and the **fraud** engine in a payments business. Don't build a worse Stripe; don't outsource your source of truth.
+It's good to show this judgement at principal level — but for a senior, you should at least be able to justify each build-vs-buy call out loud. The rule of thumb: **buy the undifferentiated; build the core.** Buy auth, email, observability tooling, queues. Build the things that *are* your competitive edge or your correctness boundary — the **ledger** and the **fraud** engine in a payments business. Don't build a worse Stripe; don't outsource your source of truth.
 :::
 
 ## Speed vs robustness

@@ -54,7 +54,7 @@ Never rely on the application *remembering* to add `WHERE tenant_id = ?`. One fo
 ## The noisy-neighbour problem
 
 :::tip[Principal Move]
-In a **pool**, one tenant's spike can starve everyone — the **noisy neighbour**. Contain it with **per-tenant rate limits and quotas**, **bulkheads** (isolated resource pools), and **[shuffle sharding](../blast-radius/)** so a heavy tenant degrades only the few it overlaps with, not the whole pool.
+It's good to layer all these defences at principal level — but for a senior, you should at least contain a noisy neighbour with **per-tenant rate limits and quotas**. In a **pool**, one tenant's spike can starve everyone — the **noisy neighbour**. Contain it with per-tenant rate limits and quotas, **bulkheads** (isolated resource pools), and **[shuffle sharding](../blast-radius/)** so a heavy tenant degrades only the few it overlaps with, not the whole pool.
 :::
 
 :::note[Key Idea]

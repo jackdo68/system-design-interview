@@ -20,7 +20,7 @@ A system goes only as fast as its slowest resource. Use **USE** (Utilisation, Sa
 ## Little's Law
 
 :::tip[Principal Move]
-**L = λ × W** — concurrent requests in the system (L) = arrival rate (λ) × time each spends (W).
+It's good to wield Little's Law at principal level — but for a senior, you should at least size your pools for peak *concurrent* requests, not just request rate. **L = λ × W** — concurrent requests in the system (L) = arrival rate (λ) × time each spends (W).
 
 This is the lens for capacity:
 
@@ -46,7 +46,7 @@ Under overload, **reject early and cheaply** — don't accept work you can't fin
 
 - **Prioritise** — drop low-value traffic (a background report) before high-value (a payment). Tier your endpoints.
 - **Reject fast** — a quick `429 Too Many Requests` is far cheaper than accepting a request, holding resources, and timing out. The expensive failure is the one you accept and can't complete.
-- **Backpressure** — signal upstream to slow down rather than silently buffering until you OOM.
+- **Backpressure** — signal upstream to slow down rather than silently buffering until you <abbr title="OOM — Out Of Memory: the process runs out of RAM and is killed/crashes.">OOM</abbr>.
 
 The worst outcome is accepting everything and collapsing — then **nobody** gets served, including the payments.
 :::

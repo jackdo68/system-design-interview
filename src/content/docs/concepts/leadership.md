@@ -10,7 +10,7 @@ At principal level, the technical questions come wrapped in leadership ones: how
 ## ADRs — durable decisions
 
 :::tip[Principal Move]
-Write **Architecture Decision Records**: **context / options / decision / consequences.** An ADR captures *why* a decision was made so it isn't **re-litigated** every six months by someone who wasn't there. It also makes reversal honest — when the context changes, you can see whether the original reasoning still holds.
+It's good to formalise this at principal level — but for a senior, you should at least record *why* a significant decision was made, not just what. Write **Architecture Decision Records (ADRs)**: **context / options / decision / consequences.** An ADR captures the reasoning so it isn't **re-litigated** every six months by someone who wasn't there. It also makes reversal honest — when the context changes, you can see whether the original reasoning still holds.
 :::
 
 ## Paved road / golden path

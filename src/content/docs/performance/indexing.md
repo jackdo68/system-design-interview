@@ -31,7 +31,7 @@ An index is a separate, sorted data structure that lets the database **find rows
 ## Read the query plan
 
 :::tip[Principal Move]
-**Don't guess — ask the database.** `EXPLAIN` (or `EXPLAIN ANALYZE`) shows the query plan. The thing you're hunting for:
+It's good to optimize with evidence at principal level — but for a senior, you should at least **read the query plan** before adding indexes. Don't guess — ask the database. `EXPLAIN` (or `EXPLAIN ANALYZE`) shows the query plan. The thing you're hunting for:
 
 - **Sequential scan** on a big table = it's reading every row → you probably need an index.
 - **Index scan** = it's using an index → good.

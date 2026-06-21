@@ -51,7 +51,7 @@ The cost you take on when you shard:
 - **Rebalancing** — adding a shard means moving data. **Consistent hashing** minimises how much moves.
 
 :::tip[Principal Move]
-Climb the ladder — don't start here. **Read replicas** first (scale reads), then shard **only when write throughput nears the primary's ceiling**, and choose the key so your hottest queries stay **single-shard**. Sharding prematurely buys you cross-shard pain before you've earned the scale that justifies it.
+It's good to sequence the whole ladder at principal level — but for a senior, you should at least **not start with sharding**. Climb the ladder: **read replicas** first (scale reads), then shard **only when write throughput nears the primary's ceiling**, and choose the key so your hottest queries stay **single-shard**. Sharding prematurely buys you cross-shard pain before you've earned the scale that justifies it.
 :::
 
 :::note[Key Idea]

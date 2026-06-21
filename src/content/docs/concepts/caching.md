@@ -11,7 +11,7 @@ Caching is the highest-leverage latency and cost win — and the richest source 
 
 Cache can live at several layers; each cuts a different cost:
 
-- **CDN** — static & cacheable responses at the edge, closest to the user.
+- **<abbr title="CDN — Content Delivery Network: servers spread around the world that cache content close to users, so responses travel a short distance.">CDN</abbr>** — static & cacheable responses at the edge, closest to the user.
 - **Client** — browser/app local cache.
 - **Application** — a shared in-memory store like **Redis**.
 - **Database** — buffer pool / query cache.
@@ -39,7 +39,7 @@ Options:
 
 - **TTL** — simplest; bounded staleness.
 - **On-write** — invalidate/update the key when the source changes.
-- **CDC** — drive invalidation from the database change stream.
+- **<abbr title="CDC — Change Data Capture: streaming a database's row changes out as events, so other systems react without the app writing twice.">CDC</abbr>** — drive invalidation from the database change stream.
 - **Versioned key** — bake a version into the key so old entries are simply never read.
 
 ## Failure modes

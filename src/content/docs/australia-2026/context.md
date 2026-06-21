@@ -17,7 +17,7 @@ The Australian Prudential Regulation Authority sets binding standards for banks 
   - *Maps to:* your **encryption, least-privilege, audit-log, and incident-response** design.
 
 :::tip[Principal Move]
-When you mention DR or third-party risk in a design, name **CPS 230**: *"Because the rail is a material service provider under CPS 230, I'd need a defined tolerance for its disruption and a tested fallback."* It shows you design within the regulatory envelope, not around it.
+It's good to weave this in unprompted at principal level — but for a senior, you should at least connect DR and third-party risk to **CPS 230** when the role is at a bank. When you mention DR or third-party risk, name CPS 230: *"Because the rail is a material service provider under CPS 230, I'd need a defined tolerance for its disruption and a tested fallback."* It shows you design within the regulatory envelope, not around it.
 :::
 
 ## Scams, fraud & conduct

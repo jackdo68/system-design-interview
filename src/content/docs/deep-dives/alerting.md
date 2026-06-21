@@ -10,7 +10,7 @@ Good alerting wakes a human **only** when a human is needed, with enough context
 ## Alert on symptoms, not causes
 
 :::tip[Principal Move]
-Page on what the **user** feels (SLO burn, elevated error rate, latency) — **not** on internal causes (one server's CPU at 90%). A cause may be harmless (autoscaling is handling it); a symptom is always worth knowing. Causes belong on dashboards for *debugging*, not on the pager.
+It's good to enforce this discipline across teams at principal level — but for a senior, you should at least **page on symptoms, not causes**. Page on what the **user** feels (SLO burn, elevated error rate, latency) — **not** on internal causes (one server's CPU at 90%). A cause may be harmless (autoscaling is handling it); a symptom is always worth knowing. Causes belong on dashboards for *debugging*, not on the pager.
 :::
 
 ## Burn-rate alerting

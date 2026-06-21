@@ -63,9 +63,11 @@ stateDiagram-v2
 
 ## External side-effects
 
-The DB transaction can't span a call to an external PSP. Three tools, often combined:
+The DB transaction can't span a call to an external <abbr title="PSP — Payment Service Provider: the external company that actually moves the money, such as a card network, bank, or payment gateway.">PSP</abbr>. Three tools, often combined:
 
 :::tip[Principal Move]
+It's good to combine all three at principal level — but for a senior, you should at least pass a **provider idempotency key** so an external call can't double-charge:
+
 - **Provider idempotency key** — pass *your* key to the provider's API. Now the provider dedupes too, so even if you call twice, they charge once.
 - **Outbox pattern** — write the *intent to call* into your DB in the same transaction as the state change; a separate relay reads the outbox and makes the call, retrying safely. No dual-write, no lost intent.
 - **Sink dedup** — the downstream consumer dedupes on the **domain ID**.

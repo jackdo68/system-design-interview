@@ -13,10 +13,10 @@ State these on the board before drawing anything:
 
 | Assumption | Value |
 | --- | --- |
-| Peak throughput | **~5,000 TPS** |
-| Latency budget | **p99 < 300 ms** on the sync path |
-| Durability (ledger) | **RPO = 0** — lose no committed transaction |
-| Recovery | **RTO < 5 min** |
+| Peak throughput | **~5,000 <abbr title="TPS — Transactions Per Second: operations handled each second at the busiest time.">TPS</abbr>** |
+| Latency budget | **<abbr title="99th-percentile latency — 99% of requests finish faster than this.">p99</abbr> < 300 ms** on the sync path |
+| Durability (ledger) | **<abbr title="RPO — Recovery Point Objective: the maximum data loss you can tolerate. RPO = 0 means lose nothing.">RPO</abbr> = 0** — lose no committed transaction |
+| Recovery | **<abbr title="RTO — Recovery Time Objective: the maximum downtime you can tolerate before service is restored.">RTO</abbr> < 5 min** |
 | Context | **Multi-tenant, regulated, fully auditable** |
 
 ## Architecture
@@ -51,7 +51,7 @@ flowchart TB
 ```
 
 :::tip[Principal Move]
-Point at the dashed `Notification → Client` edge and say it out loud: *"This is the commonly-missed path. Whether the payment succeeds **or fails**, the customer gets a notification with a reference."* Volunteering the failure-notification path before being asked is the strongest single signal in this design.
+It's good to volunteer this unprompted at principal level — but for a senior, you should at least design the failure-notification path, not just the happy path. Point at the dashed `Notification → Client` edge and say it out loud: *"This is the commonly-missed path. Whether the payment succeeds **or fails**, the customer gets a notification with a reference."*
 :::
 
 ## Saga + idempotency flow
@@ -87,7 +87,7 @@ The heart of a principal answer. For each, the failure and the move:
 - **PSP times out (unknown outcome).** Don't assume failed. **Reconcile** via a pull/status call; the idempotency key makes a retry safe; the **hold stays** until the outcome is resolved. Never double-spend on an ambiguous timeout.
 - **Orchestrator dies mid-saga.** State is **durable / event-sourced**, so it **resumes on restart**; on replay, already-`COMPLETED` steps **no-op** because each is idempotent.
 - **Ledger primary failover.** Brief write-unavailability; **queue & retry** the writes. **Never serve a balance from a replica for a debit** — read the truth from the primary.
-- **Compensation itself fails.** Retry with backoff → **DLQ** → alert + manual runbook. The ledger stays consistent and **never half-applied**.
+- **Compensation itself fails.** Retry with backoff → **<abbr title="DLQ — Dead Letter Queue: where messages that keep failing are parked for inspection and replay, instead of blocking the queue behind them.">DLQ</abbr>** → alert + manual runbook. The ledger stays consistent and **never half-applied**.
 - **Duplicate event** from at-least-once delivery. Consumer is **idempotent on the domain ID**, not the `MessageId`.
 :::
 

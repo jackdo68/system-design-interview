@@ -35,7 +35,7 @@ sequenceDiagram
 ## Frictionless vs challenge
 
 :::tip[Principal Move]
-3DS2 sends a rich **device + transaction risk** payload up front so most payments are approved **frictionlessly** — no user interaction at all. Only elevated-risk transactions get a **challenge** (OTP, biometric, app approval). The design goal is *security without killing conversion* — every challenge is a checkout you might lose. This is the same step-up idea from the [fraud](../../concepts/security/) layer, applied to cards.
+It's good to optimise security-vs-conversion at principal level — but for a senior, you should at least know 3DS2 approves most payments **frictionlessly** and only challenges elevated risk. 3DS2 sends a rich **device + transaction risk** payload up front so most payments go through with no user interaction at all. Only elevated-risk transactions get a **challenge** (<abbr title="OTP — One-Time Password: a single-use code sent to the user, e.g. by SMS or an authenticator app.">OTP</abbr>, biometric, app approval). The design goal is *security without killing conversion* — every challenge is a checkout you might lose. This is the same step-up idea from the [fraud](../../concepts/security/) layer, applied to cards.
 :::
 
 :::note[Go deeper · Tech Unpack]
@@ -50,4 +50,4 @@ The commercial reason 3DS exists:
 When a transaction is successfully authenticated through 3DS, **fraud-related chargeback liability shifts from the merchant to the issuer.** Without 3DS, the merchant eats fraudulent chargebacks; with it, the issuer does. So 3DS is both a security control *and* a liability-management decision — engineers should know it changes *who pays* when fraud slips through, not just how auth works.
 :::
 
-In regulated markets, strong customer authentication (e.g. PSD2 SCA in Europe) effectively **mandates** 3DS for many transactions — so it's a compliance requirement, not just a fraud-reduction nicety.
+In regulated markets, strong customer authentication (e.g. <abbr title="PSD2 — the EU's second Payment Services Directive. SCA — Strong Customer Authentication: its rule requiring two independent factors to approve many payments.">PSD2 SCA</abbr> in Europe) effectively **mandates** 3DS for many transactions — so it's a compliance requirement, not just a fraud-reduction nicety.

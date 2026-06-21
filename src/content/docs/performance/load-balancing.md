@@ -47,7 +47,7 @@ This is what turns a load balancer into a **reliability** tool:
 - **Connection draining** — before taking a server down, stop sending it *new* requests but let in-flight ones finish. This is how you deploy without dropping requests.
 
 :::tip[Principal Move]
-**Health checks + draining are how horizontal scaling actually stays up.** Adding servers only helps if a dead one is removed automatically and a deploying one is drained gracefully. Mention both — it shows you've operated a fleet, not just drawn one.
+It's good to speak from fleet experience at principal level — but for a senior, you should at least pair **health checks with connection draining**. Adding servers only helps if a dead one is removed automatically and a deploying one is drained gracefully. Mention both — it shows you've operated a fleet, not just drawn one.
 :::
 
 ## The routing layers (edge → server)

@@ -26,7 +26,7 @@ The **ice-cream cone** — the pyramid inverted. Lots of slow, flaky E2E tests a
 ## Contract testing
 
 :::tip[Principal Move]
-**Consumer-driven contract testing (Pact)** lets services deploy **independently without a shared staging environment**.
+It's good to enable independent deploys this way at principal level — but for a senior, you should at least know that **consumer-driven contract testing (Pact)** lets services deploy **independently without a shared staging environment**.
 
 1. The **consumer** records its expectations of the provider as a **contract**.
 2. The contract is published to a **broker**.

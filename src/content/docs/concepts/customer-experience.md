@@ -8,7 +8,7 @@ sidebar:
 This is **the flagged gap** — the thing most candidates never mention, and the thing that separates someone who's run a real system from someone who's only drawn one.
 
 :::tip[Principal Move]
-**Raise async-failure UX before you're asked.** The moment you introduce a queue or an async step, proactively say: *"Now I owe the customer a status and a failure notification."* Volunteering this is a strong principal signal — you're thinking about the human on the other end, not just the boxes.
+It's good to volunteer this unprompted at principal level — but for a senior, you should at least design a status and a failure notification the moment you add an async step. **Raise async-failure UX before you're asked.** When you introduce a queue or an async step, proactively say: *"Now I owe the customer a status and a failure notification."* Volunteering this shows you're thinking about the human on the other end, not just the boxes.
 :::
 
 ## Sync vs async — the hidden cost
