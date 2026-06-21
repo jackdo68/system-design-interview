@@ -288,6 +288,48 @@ site-title {
 }
 
 /* ---------------------------------------------------------------------------
+   Acronym / glossary terms — <abbr title="…"> gets a hover-for-definition popup
+   (the styled bubble itself is created by the script in Head.astro).
+   --------------------------------------------------------------------------- */
+abbr[title],
+abbr[data-tip] {
+	text-decoration: none;
+	font-style: normal; /* stand out even inside italic example text */
+	cursor: help;
+	padding: 0 0.15em;
+	border-radius: 3px;
+	border-bottom: 1px dashed var(--sl-color-accent);
+	background: color-mix(in srgb, var(--sl-color-accent) 14%, transparent);
+	transition: background 0.15s ease;
+}
+
+abbr[title]:hover,
+abbr[data-tip]:hover {
+	background: color-mix(in srgb, var(--sl-color-accent) 28%, transparent);
+}
+
+.abbr-tip {
+	position: fixed;
+	z-index: 200;
+	max-width: 20rem;
+	padding: 0.5rem 0.7rem;
+	font-size: 0.82rem;
+	line-height: 1.45;
+	color: #f3f4f6;
+	background: #161a24;
+	border: 1px solid color-mix(in srgb, var(--sl-color-accent) 45%, #161a24);
+	border-radius: 8px;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.12s ease;
+}
+
+.abbr-tip.is-visible {
+	opacity: 1;
+}
+
+/* ---------------------------------------------------------------------------
    Sidebar refinement
    --------------------------------------------------------------------------- */
 .sidebar-content a[aria-current='page'] {

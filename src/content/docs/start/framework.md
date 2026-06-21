@@ -71,7 +71,7 @@ Align on the problem before drawing anything.
 | **Fault tolerance** | Redundancy, failover, recovery? | [Resilience](../../concepts/resilience/) |
 | **Environment** | Mobile battery, limited memory/bandwidth? | — |
 
-**Example:** *"CP on the money path (correctness > availability), p99 < 300 ms, RPO = 0, survive an AZ loss."*
+**Example:** *"<abbr title="Consistency + Partition-tolerance (CAP). Under a network partition the system favours correctness over staying available — it rejects writes it can't confirm rather than risk divergent data.">CP</abbr> on the money path (correctness > availability), <abbr title="99th-percentile latency — 99% of requests finish faster than this. It describes the slow-tail experience, not the average.">p99</abbr> &lt; 300 ms, <abbr title="Recovery Point Objective — the maximum data loss you can tolerate, measured in time. RPO = 0 means lose zero committed transactions, even in a disaster.">RPO</abbr> = 0, survive an <abbr title="Availability Zone — an isolated datacenter within a cloud region. 'Survive an AZ loss' means staying up even if one whole zone fails.">AZ</abbr> loss."*
 
 ### Capacity — only if it changes a decision
 
